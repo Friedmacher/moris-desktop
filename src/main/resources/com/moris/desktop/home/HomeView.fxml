@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.moris.desktop.home.HomeController">
+   <center>
+      <AnchorPane fx:id="paneCenter" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="helloLabel" layoutX="285.0" layoutY="192.0" text="Home" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="67.5" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar fx:id="menuBar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                <Menu fx:id="menuFile" mnemonicParsing="false" text="%menu.file">
+                  <items>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem fx:id="menuItemPreferences" mnemonicParsing="false" onAction="#showPreferences" text="%menu.file.pref">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="COMMA" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="menuItemLogout" mnemonicParsing="false" onAction="#showLogin" text="%menu.file.logout" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%menu.window">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="%menu.help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="%menu.help.about" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <items>
+                <Button mnemonicParsing="false" text="Button" />
+              </items>
+            </ToolBar>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefWidth="60.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefWidth="60.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ToggleButton fx:id="btnHome" mnemonicParsing="false" onAction="#showHomePane" prefHeight="40.0" prefWidth="40.0" selected="true">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-globe" iconSize="20" />
+                     </graphic>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="menuButtons" />
+                     </toggleGroup>
+                     <tooltip>
+                        <Tooltip text="%menu.btn.home" />
+                     </tooltip>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnFinance" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#showFinancePane" prefHeight="40.0" prefWidth="40.0" toggleGroup="$menuButtons">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-euro-sign" iconSize="20" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="%menu.btn.fi" />
+                     </tooltip>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnMaterialManagement" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#showMaterialManagementPane" prefHeight="40.0" prefWidth="40.0" toggleGroup="$menuButtons">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-boxes" iconSize="20" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="%menu.btn.mm" />
+                     </tooltip>
+                  </ToggleButton>
+                  <ToggleButton fx:id="btnBusinessPartner" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#showBusinessPartnerPane" prefHeight="40.0" prefWidth="40.0" toggleGroup="$menuButtons">
+                     <graphic>
+                        <FontIcon iconLiteral="fas-address-book" iconSize="20" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="%menu.btn.bupa" />
+                     </tooltip>
+                  </ToggleButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="27.5" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </bottom>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

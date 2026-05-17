@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.moris.desktop.security.login.LoginController">
+   <children>
+      <VBox layoutX="15.0" layoutY="20.0" spacing="5.0">
+         <children>
+            <TextField fx:id="tfUserName" prefWidth="205.0" promptText="%label.username" />
+            <PasswordField fx:id="tfPassword" prefWidth="205.0" promptText="%label.password" />
+         </children>
+      </VBox>
+      <VBox layoutX="15.0" layoutY="100.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#doLogin" prefWidth="205.0" text="%label.login" />
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#doPasswordReset" prefWidth="205.0" text="%label.password_reset" />
+            <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#doRegister" prefWidth="205.0" text="%label.user_register" />
+         </children>
+      </VBox>
+      <TextArea fx:id="messageArea" editable="false" layoutX="244.0" layoutY="20.0" prefHeight="176.0" prefWidth="338.0" text="Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?" wrapText="true" />
+   </children>
+</AnchorPane>

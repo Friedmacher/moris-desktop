@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Read properties directly from application.properties -->
+    <springProperty scope="context" name="LOG_LEVEL" source="custom.log.level" defaultValue="INFO" />
+    <springProperty scope="context" name="LOG_DIR" source="custom.log.dir" defaultValue="/tmp" />
+    <springProperty scope="context" name="ARCHIVE_DIR" source="custom.log.archive-dir" defaultValue="/tmp" />
+
+    <!-- 1. Centralized Logging: Native JSON Console Appender (Asynchronous) -->
+    <appender name="CONSOLE_JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Swapped out layout-wrapping for native Logback 1.5+ JsonEncoder -->
+        <encoder class="ch.qos.logback.classic.encoder.JsonEncoder">
+            <!-- Native configuration parameters -->
+            <withFormattedMessage>true</withFormattedMessage>
+            <withMessage>false</withMessage>
+            <withArguments>false</withArguments>
+            <!-- Timestamps default to standard ISO-8601 formatting -->
+        </encoder>
+    </appender>
+
+    <!-- Wrap console in AsyncAppender for high-throughput centralized shipping -->
+    <appender name="ASYNC_CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="CONSOLE_JSON" />
+        <queueSize>512</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <includeCallerData>false</includeCallerData>
+    </appender>
+
+    <!-- 2. Local Logging: Rolling File Appender -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/application.log</file>
+
+        <!-- Standard human-readable pattern for local files -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+
+        <!-- Roll over when file hits 10MB, naming archive by year-month-day -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${ARCHIVE_DIR}/app-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Application Logging Levels -->
+    <root level="${LOG_LEVEL}">
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ROLLING_FILE" />
+    </root>
+
+</configuration>
